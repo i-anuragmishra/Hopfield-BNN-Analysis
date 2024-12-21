@@ -89,6 +89,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Author
 
 Anurag Mishra  
-Department of Computer Science  
 Rochester Institute of Technology  
 am2552@rit.edu
