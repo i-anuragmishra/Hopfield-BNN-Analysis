@@ -1,101 +1,94 @@
-# Deep Learning Project: Neural Network Implementations
+# Bridging Associative Memory Retrieval and Uncertainty Quantification
 
-**Author:** Anurag Mishra  
-**Course:** CISC 865 Deep Learning  
-**Final Project**
+[![arXiv](https://img.shields.io/badge/arXiv-2412.XXXXX-b31b1b.svg)](https://arxiv.org/abs/2412.XXXXX)
 
-## Overview
-This project explores and compares two neural network paradigms:
-1. **Bayesian Neural Network (BNN):** A convolutional neural network with uncertainty estimation using Monte Carlo Dropout.
-2. **Hopfield Network:** A classical associative memory network for pattern retrieval.
+This repository contains the implementation and experimental code for the paper "Bridging Associative Memory Retrieval and Uncertainty Quantification: A Comparative Analysis of Hopfield Networks and Monte Carlo Dropout-Based Bayesian Neural Models".
 
-The analysis highlights the strengths and limitations of both approaches, focusing on tasks like uncertainty quantification and robust pattern retrieval.
+## Abstract
+
+This research provides a comparative study of classical associative memory paradigms with modern uncertainty-aware deep learning techniques. We explore the performances of Hopfield networks and Bayesian neural networks under noisy and out-of-distribution conditions. Our analysis demonstrates that Hopfield networks excel at deterministic pattern retrieval, while Bayesian neural networks provide well-calibrated uncertainty estimates.
+
+Key findings:
+- Hopfield networks achieve reliable pattern retrieval below theoretical capacity (~8 patterns)
+- Bayesian neural networks exhibit well-calibrated predictive probabilities (ECE = 0.0269)
+- Significant uncertainty increase (0.0094 to 0.0719) for out-of-distribution examples
 
 ## Project Structure
+
 ```
-.
-├── bayesian_nn/
-│   ├── evaluate.py         # Evaluation script with uncertainty analysis
-│   ├── model.py            # Bayesian CNN implementation
-│   └── train.py            # Training script for Bayesian CNN
-├── hopfield/
-│   ├── hopfield_network.py # Hopfield Network implementation
-│   └── run_hopfield.py     # Demonstration and analysis of Hopfield Networks
-├── results/
-│   ├── bayesian_nn_results/
-│   │   ├── calibration.png     # Calibration results
-│   │   ├── ood_analysis.png    # Out-of-distribution analysis
-│   │   └── uncertainty_analysis.png # Uncertainty vs. noise analysis
-│   ├── hopfield_results/
-│   │   ├── basic_retrieval.png     # Example of pattern retrieval
-│   │   ├── basin_of_attraction.png # Basin of attraction analysis
-│   │   ├── capacity_analysis.png   # Capacity analysis
-│   │   ├── energy_convergence.png  # Energy convergence during recall
-│   │   └── pattern_overlap.png     # Pattern overlap analysis
-├── requirements.txt        # Python dependencies for the project
-└── README.md               # Project documentation
+├── bayesian_nn/          # Bayesian Neural Network implementation
+│   ├── model.py         # MC Dropout CNN architecture
+│   └── training.py      # Training and uncertainty estimation
+├── data/                # Dataset utilities and storage
+├── hopfield/            # Hopfield Network implementation
+│   ├── network.py      # Core Hopfield network class
+│   └── utils.py        # Helper functions
+└── results/            # Experimental results and visualizations
 ```
 
 ## Requirements
-- Python 3.8+
-- PyTorch 1.12+
-- torchvision
-- NumPy
-- Matplotlib
-- Seaborn
 
-Install dependencies with:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
-### Bayesian Neural Network
-1. **Training**
-   Train the BNN using the `train.py` script:
-   ```bash
-   python bayesian_nn/train.py
-   ```
-   This trains the model on a subset of the MNIST dataset and saves the model weights.
+Dependencies:
+- PyTorch ≥ 1.9.0
+- NumPy ≥ 1.19.2
+- Matplotlib ≥ 3.3.4
+- Seaborn ≥ 0.11.1
+- SciPy ≥ 1.6.2
 
-2. **Evaluation**
-   Evaluate the BNN with uncertainty quantification using `evaluate.py`:
-   ```bash
-   python bayesian_nn/evaluate.py
-   ```
-   This generates results for:
-   - Uncertainty analysis vs. noise levels
-   - Out-of-distribution detection
-   - Calibration analysis
+## Key Features
 
-### Hopfield Network
-1. **Pattern Storage and Retrieval**
-   Run `run_hopfield.py` to demonstrate pattern retrieval, analyze energy convergence, and assess capacity:
-   ```bash
-   python hopfield/run_hopfield.py
-   ```
-   This script produces visualizations for:
-   - Basic pattern retrieval
-   - Energy convergence
-   - Basin of attraction analysis
+1. **Hopfield Network Implementation**
+   - Binary pattern storage and retrieval
+   - Energy-based convergence
    - Capacity analysis
+   - Noise robustness evaluation
 
-2. **Customization**
-   Modify patterns and noise levels in `run_hopfield.py` for custom experiments.
+2. **Bayesian Neural Network**
+   - Monte Carlo dropout implementation
+   - Uncertainty quantification
+   - Out-of-distribution detection
+   - Calibration assessment
 
-## Key Results
-- **Hopfield Network:** Demonstrated robust pattern retrieval up to its theoretical capacity (~8 patterns for 64 neurons).
-  - Key visualizations:
-    - `basic_retrieval.png`: Demonstrates pattern restoration from noisy input.
-    - `capacity_analysis.png`: Validates theoretical capacity.
-    - `energy_convergence.png`: Tracks energy minimization during retrieval.
-- **Bayesian Neural Network:** Showcased well-calibrated predictions and sensitivity to out-of-distribution inputs.
-  - Key visualizations:
-    - `calibration.png`: Reliability diagram (ECE = 0.0269).
-    - `ood_analysis.png`: Distinguishes in-distribution vs. OOD uncertainties.
-    - `uncertainty_analysis.png`: Captures uncertainty variations with noise levels.
+## Experimental Results
 
-## Future Directions
-- **Hybrid Models:** Explore integrating Hopfield Networks with BNNs to combine robust pattern retrieval with uncertainty quantification.
-- **Scalability:** Extend analyses to larger datasets and more complex architectures.
-- **Applications:** Investigate real-world applications like noisy sensor data interpretation and memory-augmented learning.
+The repository includes code to reproduce the main experimental results from the paper:
+
+1. Hopfield Network Analysis
+   - Pattern retrieval performance
+   - Capacity limits investigation
+   - Energy convergence plots
+   - Pattern overlap matrices
+
+2. Bayesian NN Evaluation
+   - Uncertainty quantification
+   - OOD detection performance
+   - Calibration metrics
+   - MNIST classification results
+
+## Citation
+
+If you find this work useful in your research, please cite:
+
+```bibtex
+@article{mishra2024bridging,
+  title={Bridging Associative Memory Retrieval and Uncertainty Quantification: A Comparative Analysis of Hopfield Networks and Monte Carlo Dropout-Based Bayesian Neural Models},
+  author={Mishra, Anurag},
+  journal={arXiv preprint arXiv:2412.XXXXX},
+  year={2024}
+}
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+Anurag Mishra  
+Department of Computer Science  
+Rochester Institute of Technology  
+am2552@rit.edu
